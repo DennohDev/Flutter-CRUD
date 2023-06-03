@@ -25,20 +25,12 @@ class ProductController extends Controller
         ]);
 
         $product = new Product();
-        $product ->name=$request->post('name');
-        $product ->qty =$request->post('qty');
-        $product ->price =$request->post('price');
-        $product ->description =$request->post('description');
-        if($product ->save()){
-            return response()->json([
-                'success' =>true,
-            ]);
-        }
-        else{
-            return response()->json([
-                'success' =>false,
-            ]);
-        }
+        $product->name = $data['name'];
+        $product->qty = $data['qty'];
+        $product->price = $data['price'];
+        $product->description = $data['description'];
+        $product->save();
+        return response()->json($product);
     }
 
     public function show(Product $product){

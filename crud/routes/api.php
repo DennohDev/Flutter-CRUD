@@ -22,10 +22,14 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('cors')->group(function () {
 // });
 // Route::get('/product', 'App\Http\Controller\ProductController@index');
-Route::post('/product', [ProductController::class, 'store']);
-Route::get('/GET_ALL', [ProductController::class, 'index']);
 
 
+
+Route::apiResources([
+    '/products' => ProductController::class,
+]);
+Route::post('/products/store',[ProductController::class, 'store']);
+Route::delete('/products/delete/{product}', [ProductController::class,'delete'] );
 
 
 
